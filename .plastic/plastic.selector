@@ -1,0 +1,4 @@
+repository "Stroop Test/Stroop Test@9072177809220@cloud"
+  path "/"
+    br "/main"
+    co "/main"
