@@ -15,7 +15,7 @@ E:/Unityyy/Stroop Test
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-61325
+53082
 -job-worker-count
 7
 -background-job-worker-count
@@ -59,14 +59,14 @@ E:/Unityyy/Stroop Test
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [32416]  Target information:
+Player connection [36216]  Target information:
 
-Player connection [32416]  * "[IP] 192.168.0.235 [Port] 0 [Flags] 2 [Guid] 1005089225 [EditorId] 1005089225 [Version] 1048832 [Id] WindowsEditor(7,BingusDingus) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [36216]  * "[IP] 192.168.0.235 [Port] 0 [Flags] 2 [Guid] 2785738037 [EditorId] 2785738037 [Version] 1048832 [Id] WindowsEditor(7,BingusDingus) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [32416]  * "[IP] 10.5.0.2 [Port] 0 [Flags] 2 [Guid] 1005089225 [EditorId] 1005089225 [Version] 1048832 [Id] WindowsEditor(7,BingusDingus) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [36216]  * "[IP] 10.5.0.2 [Port] 0 [Flags] 2 [Guid] 2785738037 [EditorId] 2785738037 [Version] 1048832 [Id] WindowsEditor(7,BingusDingus) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [32416] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [32416] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [36216] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [36216] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
@@ -77,9 +77,9 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 23.40 ms, found 14 plugins.
+Refreshing native plugins compatible for Editor in 25.74 ms, found 14 plugins.
 Unity memory allocator detected: MetaXRAudio native memory allocations will be tracked.
-Preloading 2 native plugins for Editor in 2.46 ms.
+Preloading 2 native plugins for Editor in 2.97 ms.
 Initialize engine version: 6000.0.27f1 (27c554a2199c)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.27f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path E:/Unityyy/Stroop Test/Assets
@@ -96,45 +96,45 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.27f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.27f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.27f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56912
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56544
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.27f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
-Registered in 0.005279 seconds.
-- Loaded All Assemblies, in  0.316 seconds
+Registered in 0.004650 seconds.
+- Loaded All Assemblies, in  0.322 seconds
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 174 ms
+Android Extension - Scanning For ADB Devices 198 ms
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.403 seconds
-Domain Reload Profiling: 712ms
-	BeginReloadAssembly (124ms)
+- Finished resetting the current domain, in  0.455 seconds
+Domain Reload Profiling: 771ms
+	BeginReloadAssembly (125ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (0ms)
-	RebuildCommonClasses (23ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (44ms)
-	LoadAllAssembliesAndSetupDomain (110ms)
-		LoadAssemblies (117ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (45ms)
+	LoadAllAssembliesAndSetupDomain (113ms)
+		LoadAssemblies (118ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (107ms)
-			TypeCache.Refresh (106ms)
-				TypeCache.ScanAssembly (97ms)
+		AnalyzeDomain (111ms)
+			TypeCache.Refresh (110ms)
+				TypeCache.ScanAssembly (100ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (403ms)
+	FinalizeReload (456ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (382ms)
+		SetupLoadedEditorAssemblies (421ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (242ms)
+			InitializePlatformSupportModulesInManaged (269ms)
 			SetLoadedEditorAssemblies (2ms)
-			BeforeProcessingInitializeOnLoad (3ms)
-			ProcessInitializeOnLoadAttributes (90ms)
+			BeforeProcessingInitializeOnLoad (4ms)
+			ProcessInitializeOnLoadAttributes (100ms)
 			ProcessInitializeOnLoadMethodAttributes (43ms)
 			AfterProcessingInitializeOnLoad (2ms)
 			EditorAssembliesLoaded (0ms)
@@ -144,8 +144,7 @@ Domain Reload Profiling: 712ms
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.921 seconds
+- Loaded All Assemblies, in  0.944 seconds
 Script 'CharacterController' has the same name as built-in Unity component.
 AddComponent and GetComponent will not work with this script.
 'Packages/com.unity.xr.openxr/Runtime/OpenXRLoader.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
@@ -153,7 +152,7 @@ AddComponent and GetComponent will not work with this script.
 'Packages/com.unity.xr.openxr/Runtime/OpenXRLoaderInternal.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
 'Packages/com.meta.xr.sdk.core/Editor/BuildingBlocks/BlocksWindowDetailsExtension.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
 'Packages/com.meta.xr.sdk.core/Editor/BuildingBlocks/BlocksWindowCollectionsPageExtension.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-Refreshing native plugins compatible for Editor in 18.31 ms, found 14 plugins.
+Refreshing native plugins compatible for Editor in 20.95 ms, found 14 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Package Manager log level set to [2]
@@ -163,4 +162,4 @@ Package Manager log level set to [2]
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
-Refreshing native plugins compatible for Editor in 18.23 ms, found 14 plugins.
+Refreshing native plugins compatible for Editor in 20.19 ms, found 14 plugins.
