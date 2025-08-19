@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "E:\\Unityyy\\Stroop Test\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8DA8A273-DDAE-694D-98D1-00B661E2A53A}|Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj|e:\\unityyy\\stroop test\\assets\\samples\\xr interaction toolkit\\3.0.8\\starter assets\\scripts\\controllerinputactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DA8A273-DDAE-694D-98D1-00B661E2A53A}|Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj|solutionrelative:assets\\samples\\xr interaction toolkit\\3.0.8\\starter assets\\scripts\\controllerinputactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{64C60067-B07B-37C2-A026-847F75011B94}|Assembly-CSharp.csproj|E:\\Unityyy\\Stroop Test\\assets\\selectivegoaliemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{64C60067-B07B-37C2-A026-847F75011B94}|Assembly-CSharp.csproj|solutionrelative:assets\\selectivegoaliemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,12 +11,16 @@
       "RelativeMoniker": "D:0:0:{64C60067-B07B-37C2-A026-847F75011B94}|Assembly-CSharp.csproj|solutionrelative:assets\\selectiveprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64C60067-B07B-37C2-A026-847F75011B94}|Assembly-CSharp.csproj|E:\\Unityyy\\Stroop Test\\assets\\goaliepaddle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64C60067-B07B-37C2-A026-847F75011B94}|Assembly-CSharp.csproj|solutionrelative:assets\\goaliepaddle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Unityyy\\Stroop Test\\Library\\PackageCache\\com.meta.xr.sdk.core\\Editor\\OVRProjectSetup\\Tasks\\Processors\\OVRConfigurationTaskUpdaterSummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.meta.xr.sdk.core\\Editor\\OVRProjectSetup\\Tasks\\Processors\\OVRConfigurationTaskUpdaterSummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DA8A273-DDAE-694D-98D1-00B661E2A53A}|Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj|E:\\Unityyy\\Stroop Test\\assets\\samples\\xr interaction toolkit\\3.0.8\\starter assets\\scripts\\controllerinputactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DA8A273-DDAE-694D-98D1-00B661E2A53A}|Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj|solutionrelative:assets\\samples\\xr interaction toolkit\\3.0.8\\starter assets\\scripts\\controllerinputactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64C60067-B07B-37C2-A026-847F75011B94}|Assembly-CSharp.csproj|E:\\Unityyy\\Stroop Test\\assets\\goaliepaddle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64C60067-B07B-37C2-A026-847F75011B94}|Assembly-CSharp.csproj|solutionrelative:assets\\goaliepaddle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8DA8A273-DDAE-694D-98D1-00B661E2A53A}|Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj|E:\\Unityyy\\Stroop Test\\assets\\samples\\xr interaction toolkit\\3.0.8\\starter assets\\scripts\\gazeinputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,11 +34,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "ControllerInputActionManager.cs",
               "DocumentMoniker": "E:\\Unityyy\\Stroop Test\\Assets\\Samples\\XR Interaction Toolkit\\3.0.8\\Starter Assets\\Scripts\\ControllerInputActionManager.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\XR Interaction Toolkit\\3.0.8\\Starter Assets\\Scripts\\ControllerInputActionManager.cs",
@@ -46,12 +46,11 @@
               "RelativeToolTip": "Assets\\Samples\\XR Interaction Toolkit\\3.0.8\\Starter Assets\\Scripts\\ControllerInputActionManager.cs",
               "ViewState": "AgIAAEMBAAAAAAAAAAAcwFwBAACkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T11:53:13.875Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-05T11:53:13.875Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "GoaliePaddle.cs",
               "DocumentMoniker": "E:\\Unityyy\\Stroop Test\\Assets\\GoaliePaddle.cs",
               "RelativeDocumentMoniker": "Assets\\GoaliePaddle.cs",
@@ -63,38 +62,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "OVRConfigurationTaskUpdaterSummary.cs",
               "DocumentMoniker": "E:\\Unityyy\\Stroop Test\\Library\\PackageCache\\com.meta.xr.sdk.core\\Editor\\OVRProjectSetup\\Tasks\\Processors\\OVRConfigurationTaskUpdaterSummary.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.meta.xr.sdk.core\\Editor\\OVRProjectSetup\\Tasks\\Processors\\OVRConfigurationTaskUpdaterSummary.cs",
               "ToolTip": "E:\\Unityyy\\Stroop Test\\Library\\PackageCache\\com.meta.xr.sdk.core\\Editor\\OVRProjectSetup\\Tasks\\Processors\\OVRConfigurationTaskUpdaterSummary.cs",
               "RelativeToolTip": "Library\\PackageCache\\com.meta.xr.sdk.core\\Editor\\OVRProjectSetup\\Tasks\\Processors\\OVRConfigurationTaskUpdaterSummary.cs",
-              "ViewState": "AgIAAIsAAAAAAAAAAAAIwNwAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAMoAAAAAAAAAAAAlwNMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-01T08:32:40.765Z"
+              "WhenOpened": "2025-08-01T08:32:40.765Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "SelectiveProjectile.cs",
               "DocumentMoniker": "E:\\Unityyy\\Stroop Test\\Assets\\SelectiveProjectile.cs",
               "RelativeDocumentMoniker": "Assets\\SelectiveProjectile.cs",
               "ToolTip": "E:\\Unityyy\\Stroop Test\\Assets\\SelectiveProjectile.cs",
               "RelativeToolTip": "Assets\\SelectiveProjectile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAxwGMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-31T15:29:13.738Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "SelectiveGoalieManager.cs",
               "DocumentMoniker": "E:\\Unityyy\\Stroop Test\\Assets\\SelectiveGoalieManager.cs",
               "RelativeDocumentMoniker": "Assets\\SelectiveGoalieManager.cs",
               "ToolTip": "E:\\Unityyy\\Stroop Test\\Assets\\SelectiveGoalieManager.cs",
               "RelativeToolTip": "Assets\\SelectiveGoalieManager.cs",
-              "ViewState": "AgIAAFEBAAAAAAAAAAAswGUBAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAQwAYCAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-31T15:29:11.46Z",
               "EditorCaption": ""

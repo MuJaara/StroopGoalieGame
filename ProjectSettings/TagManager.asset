@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - PlayerBody
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Paddle_Solid
   - Paddle_Trigger
   - Goal
-  - 
+  - PlayerBody_Solid
   - 
   - 
   - 

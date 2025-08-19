@@ -1,9 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 
-public class StroopGoalieManager : MonoBehaviour
+public class SelectiveGoalieManager : MonoBehaviour
 {
     [Header("HUD Canvas UI (Corner)")]
     public Canvas hudCanvas;
@@ -21,6 +21,16 @@ public class StroopGoalieManager : MonoBehaviour
     public TextMeshProUGUI blockText3D;
     public TextMeshProUGUI ignoreText3D;
     public TMP_InputField playerNameInput;
+    public TMP_Dropdown timeDropdown;
+    public TMP_Dropdown speedDropdown;
+
+
+    private readonly int[] timeOptions = {120, 180, 300};
+    private readonly string[] timeLabels = { "2:00", "3:00","5:00" };
+
+    private readonly float[] speedOptions = { 6f, 8f, 10f, 12f, 14f };
+    private readonly string[] speedLabels = { "Slow", "Medium-", "Medium", "Medium+", "Fast" };
+
 
     [Header("Game Objects")]
     public Transform[] spawners;
@@ -41,10 +51,18 @@ public class StroopGoalieManager : MonoBehaviour
     public float maxInterval = 1.1f;
     public float speed = 10f;
 
-    private Color[] colorValues = { Color.green, Color.red };
-    private string[] colorNames = { "GREEN", "RED" };
-    private Color[] newColorValues = { new Color(1f, 0.55f, 0f), Color.blue };
-    private string[] newColorNames = { "ORANGE", "BLUE" };
+    private readonly Color[] masterColors = {
+    Color.red,                  // RED
+    Color.green,                // GREEN
+    new Color(0.5f, 0f, 0.5f),  // PURPLE
+    new Color(1f, 0.55f, 0f),   // ORANGE
+    Color.blue,                 // BLUE
+    Color.black                 // BLACK
+};
+    private readonly string[] masterNames = { "RED", "GREEN", "PURPLE", "ORANGE", "BLUE", "BLACK" };
+    private Color[] colorValues = new Color[2];
+    private string[] colorNames = new string[2];
+    private int activeA = -1, activeB = -1;
 
     private int blockColorIndex, ignoreColorIndex;
     private int score = 0;
@@ -61,7 +79,7 @@ public class StroopGoalieManager : MonoBehaviour
     private int ignoreMissed = 0;
 
     private string playerName = "Player";
-
+    public Material spawnerCubeMaterial;
 
     private bool rulesChanged = false;
     private bool rulesChangePause = false;
@@ -78,7 +96,20 @@ public class StroopGoalieManager : MonoBehaviour
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.position = spawner.position;
             cube.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            cube.GetComponent<Renderer>().material.color = Color.yellow;
+
+            var renderer = cube.GetComponent<Renderer>();
+            if (spawnerCubeMaterial != null)
+            {
+                renderer.material = spawnerCubeMaterial;
+            }
+            else
+            {
+                // fallback: neutral, semi-transparent gray
+                Material mat = new Material(Shader.Find("Standard"));
+                mat.color = new Color(0.3f, 0.3f, 0.3f, 0.5f);  // RGBA
+                renderer.material = mat;
+            }
+
             Destroy(cube.GetComponent<BoxCollider>());
         }
 
@@ -87,6 +118,7 @@ public class StroopGoalieManager : MonoBehaviour
         if (leftPaddleObject != null) leftPaddleObject.SetActive(false);
         if (rightPaddleObject != null) rightPaddleObject.SetActive(false);
         if (rulesChangePanel != null) rulesChangePanel.SetActive(false);
+        SetupDropdowns();
 
         startMenuCanvas.gameObject.SetActive(true);
         countdownText.gameObject.SetActive(false);
@@ -94,15 +126,36 @@ public class StroopGoalieManager : MonoBehaviour
         ignoreText3D.gameObject.SetActive(false);
 
         startButton3D.onClick.AddListener(BeginCountdown);
+        if (resetButton != null)
+        {
+            resetButton.onClick.RemoveAllListeners();   // avoid duplicate bindings
+            resetButton.onClick.AddListener(ResetGame);
+        }
+        else
+        {
+            // (Optional) Try to find it under resultsPanel by name
+            if (resultsPanel != null)
+            {
+                var btn = resultsPanel.GetComponentInChildren<Button>(true);
+                if (btn != null)
+                {
+                    resetButton = btn;
+                    resetButton.onClick.RemoveAllListeners();
+                    resetButton.onClick.AddListener(ResetGame);
+                }
+            }
+        }
 
         SetupStroopRules();
     }
 
     void SetupStroopRules()
     {
-        blockColorIndex = Random.Range(0, 2);
+        PickNewRulePair(false);                 // pick any 2 to start the game
+        blockColorIndex = Random.Range(0, 2);  // which of the 2 is "block"
         ignoreColorIndex = 1 - blockColorIndex;
-        int blockTextColorIndex = 1 - blockColorIndex;
+
+        int blockTextColorIndex = 1 - blockColorIndex; // ink color ≠ word
         int ignoreTextColorIndex = blockColorIndex;
 
         blockText3D.text = $"Block: <b><color=#{ColorUtility.ToHtmlStringRGB(colorValues[blockTextColorIndex])}>{colorNames[blockColorIndex]}</color></b>";
@@ -113,6 +166,8 @@ public class StroopGoalieManager : MonoBehaviour
 
     void BeginCountdown()
     {
+        if (timeDropdown) timeDropdown.gameObject.SetActive(false);
+        if (speedDropdown) speedDropdown.gameObject.SetActive(false);
         if (playerNameInput != null && !string.IsNullOrEmpty(playerNameInput.text))
             playerName = playerNameInput.text;
         else
@@ -158,6 +213,25 @@ public class StroopGoalieManager : MonoBehaviour
 
         running = true;
         StartCoroutine(SpawnLoop());
+    }
+
+    void PickNewRulePair(bool avoidSameAsCurrent)
+    {
+        int a, b;
+        do
+        {
+            a = Random.Range(0, masterColors.Length);
+            do { b = Random.Range(0, masterColors.Length); } while (b == a);
+            // if avoiding the same pair, check both (a,b) and (b,a)
+        } while (avoidSameAsCurrent &&
+                ((a == activeA && b == activeB) || (a == activeB && b == activeA)));
+
+        activeA = a; activeB = b;
+
+        colorValues[0] = masterColors[a];
+        colorValues[1] = masterColors[b];
+        colorNames[0] = masterNames[a];
+        colorNames[1] = masterNames[b];
     }
 
     void Update()
@@ -224,24 +298,44 @@ public class StroopGoalieManager : MonoBehaviour
         ball.Fire(spawner.position, vel, isDanger, ballColor);
     }
 
-    void OnBlocked(SelectiveProjectile ball)
+    void OnBlocked(SelectiveProjectile ball, bool blockedByBody)
     {
-        if (ball.isDanger)
+        if (blockedByBody)
         {
-            goodBlocks++;
-            score += 1;
-            if (blockAudioSource != null) blockAudioSource.Play();
+            // Body blocks never give +1, only penalize ignores
+            if (!ball.isDanger)
+            {
+                badBlocks++;
+                score -= 1;
+                if (buzzerAudioSource != null)
+                {
+                    buzzerAudioSource.Stop();
+                    buzzerAudioSource.Play();
+                }
+            }
+            // If it's a danger ball blocked by the body: no score change
         }
         else
         {
-            badBlocks++;
-            score -= 1;
-            if (buzzerAudioSource != null)
+            // Paddle block logic stays the same
+            if (ball.isDanger)
             {
-                buzzerAudioSource.Stop();
-                buzzerAudioSource.Play();
+                goodBlocks++;
+                score += 1;
+                if (blockAudioSource != null) blockAudioSource.Play();
+            }
+            else
+            {
+                badBlocks++;
+                score -= 1;
+                if (buzzerAudioSource != null)
+                {
+                    buzzerAudioSource.Stop();
+                    buzzerAudioSource.Play();
+                }
             }
         }
+
         UpdateScoreUI();
     }
 
@@ -279,6 +373,13 @@ public class StroopGoalieManager : MonoBehaviour
         if (rightPaddleObject != null) rightPaddleObject.SetActive(false);
 
         if (resultsPanel != null) resultsPanel.SetActive(true);
+        var btn = resultsPanel ? resultsPanel.GetComponentInChildren<Button>(true) : null;
+        if (btn != null)
+        {
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(ResetGame);
+            Debug.Log("[SelectiveGoalieManager] Reset re-wired at EndGame.");
+        }
 
         // Hide HUD texts
         if (scoreText != null) scoreText.gameObject.SetActive(false);
@@ -292,6 +393,7 @@ public class StroopGoalieManager : MonoBehaviour
         {
             resultsText.text =
                 $"<size=120%><b>Game Over!</b></size>\n\n" +
+                $"<size=115%>Score: <b>{score}</b></size>\n\n" +            // ← added line
                 $"Danger Balls Blocked: <b>{goodBlocks}</b>\n" +
                 $"Ignore Balls Blocked: <b>{badBlocks}</b>\n" +
                 $"Missed Danger Balls: <b>{missedBlocks}</b>\n" +
@@ -310,11 +412,10 @@ public class StroopGoalieManager : MonoBehaviour
         rulesChangePauseTimer = 3f;
         running = false;
 
-        colorValues = newColorValues;
-        colorNames = newColorNames;
-
-        blockColorIndex = Random.Range(0, 2);
+        PickNewRulePair(true);                  // avoid repeating the same pair
+        blockColorIndex = Random.Range(0, 2);  // re-roll which of the 2 is "block"
         ignoreColorIndex = 1 - blockColorIndex;
+
         int blockTextColorIndex = 1 - blockColorIndex;
         int ignoreTextColorIndex = blockColorIndex;
 
@@ -345,6 +446,47 @@ public class StroopGoalieManager : MonoBehaviour
 
         StartCoroutine(SpawnLoop());
     }
+
+    void SetupDropdowns()
+    {
+        if (timeDropdown != null)
+        {
+            timeDropdown.ClearOptions();
+            timeDropdown.AddOptions(new System.Collections.Generic.List<string>(timeLabels));
+
+            // Preselect the entry that matches current gameDuration, else default to 120s
+            int idx = System.Array.IndexOf(timeOptions, Mathf.RoundToInt(gameDuration));
+            timeDropdown.value = (idx >= 0) ? idx : 3; // default to "2:00"
+            timeDropdown.RefreshShownValue();
+            timeDropdown.onValueChanged.RemoveAllListeners();
+            timeDropdown.onValueChanged.AddListener(OnTimeDropdownChanged);
+        }
+
+        if (speedDropdown != null)
+        {
+            speedDropdown.ClearOptions();
+            speedDropdown.AddOptions(new System.Collections.Generic.List<string>(speedLabels));
+
+            // Preselect the entry that matches current speed, else default to 10
+            int idx = System.Array.IndexOf(speedOptions, speed);
+            speedDropdown.value = (idx >= 0) ? idx : 2; // default to "Medium" (10)
+            speedDropdown.RefreshShownValue();
+            speedDropdown.onValueChanged.RemoveAllListeners();
+            speedDropdown.onValueChanged.AddListener(OnSpeedDropdownChanged);
+        }
+    }
+
+    void OnTimeDropdownChanged(int index)
+    {
+        if (index >= 0 && index < timeOptions.Length)
+            gameDuration = timeOptions[index];
+    }
+
+    void OnSpeedDropdownChanged(int index)
+    {
+        if (index >= 0 && index < speedOptions.Length)
+            speed = speedOptions[index];
+    }
     public void ResetGame()
     {
         Debug.Log("Reset Button Clicked!");
@@ -361,17 +503,21 @@ public class StroopGoalieManager : MonoBehaviour
         gameEnded = false;
         running = false;
 
-
+        if (rulesChangePanel) rulesChangePanel.SetActive(false);
+        if (blockText3D) blockText3D.gameObject.SetActive(false);   // ← add
+        if (ignoreText3D) ignoreText3D.gameObject.SetActive(false);  // ← add
+        if (countdownText) countdownText.gameObject.SetActive(false); // ← add
         if (leftPaddleObject != null) leftPaddleObject.SetActive(false);
         if (rightPaddleObject != null) rightPaddleObject.SetActive(false);
 
 
-        colorValues = new Color[] { Color.green, Color.red };
-        colorNames = new string[] { "GREEN", "RED" };
         SetupStroopRules();
 
 
         if (startMenuCanvas != null) startMenuCanvas.gameObject.SetActive(true);
+        if (timeDropdown) timeDropdown.gameObject.SetActive(true);
+        if (speedDropdown) speedDropdown.gameObject.SetActive(true);
+        SetupDropdowns();
 
 
         if (hudCanvas != null) hudCanvas.gameObject.SetActive(false);
